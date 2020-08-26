@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- CSS -->
+
+<style>
+
+#inputs{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+}
+
+#form{
+  justify-self: right;
+}
+
+#add{
+  justify-self: left;
+}
+
+
+#card{
+  display: grid;
+  grid-template-columns: auto auto;
+  border: solid 1px black;
+  align-items: center;
+}
+#verde{
+  
+  background-color: rgb(52, 236, 46);
+  width: 100%;
+  height: 20px;
+  justify-self:start;  
+
+}
+#azul{
+ 
+  background-color: rgb(70, 126, 230);
+  width: 100%;
+  height: 20px;
+  justify-self:end; 
+  
+  
+}
+</style>
+
+<!-- HTML -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Fockus</title>
+    <title>Fockus</title>
 </head>
 <body>
-    
+  <div id="inputs">
+  <form id="form">
+    <input type="text" name="nametask" placeholder="Nome da Tarefa" autocomplete="off">
+  </form>
+  <button id="add" onclick="criarTarefa()">Adicionar Tarefa</button>
+  </div>
+
+
+  <div id="tarefa">
+    <p id="text">Exemplo - Tarefa 1</p>
+    <div id="card">
+      <div id="verde"></div>
+      <div id="azul"></div>
+    </div>
+  </div>
+  
 </body>
 </html>
+
+<!-- JavaScript -->
+<script>
+
+// Função de Criar Tarefas
+function criarTarefa(){
+  var newcontent = "";
+  //Criar o Modelo de Elemento a Ser Gerado
+  var newtask = document.createElement("div");
+  newtask.setAttribute("id", "tarefa");
+  var newtext = document.createElement("p");
+  newtext.setAttribute("id", "text");
+  var newcard = document.createElement("div");
+  newcard.setAttribute("id", "card");
+  var newverde = document.createElement("div");
+  newverde.setAttribute("id", "verde");
+  var newazul = document.createElement("div");
+  newazul.setAttribute("id", "azul");
+  var newcontent = document.createTextNode(nomeTarefa());
+
+  newtask.appendChild(newtext);
+  newtext.appendChild(newcontent);
+  newtask.appendChild(newcard);
+  newcard.appendChild(newverde);
+  newcard.appendChild(newazul);
+
+
+  // Adiciona o Elemendo Gerado
+  var oldtask = document.getElementById("tarefa"); 
+  document.body.insertBefore(newtask, oldtask);
+}
+
+// Função de Criar Tarefas
+function nomeTarefa(){
+        var x = document.getElementById("form");
+        var texto = "";
+        var i;
+        for (i = 0; i < x.length ;i++) {
+          texto += x.elements[i].value;
+        }
+        return texto;
+} 
+</script>
