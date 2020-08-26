@@ -5,6 +5,7 @@
 
 <style>
 
+/* Grid Inputs */
 #inputs{
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -19,7 +20,39 @@
   justify-self: left;
 }
 
+/* Grid Act */
 
+#act{
+  display: grid;
+  grid-template-columns: 1fr min-content min-content min-content min-content 1fr;
+  align-items: center;
+}
+
+#text{
+  justify-self: start;
+  
+}
+#play{
+  justify-self: auto;
+}
+#stop{
+  justify-self: auto;
+ 
+}
+#edit{
+  justify-self: auto;
+  
+}
+#clear{
+  justify-self: auto;
+ 
+}
+#time{
+  justify-self: end;
+  
+}
+
+/* Grid Cards */
 #card{
   display: grid;
   grid-template-columns: auto auto;
@@ -29,7 +62,7 @@
 #verde{
   
   background-color: rgb(52, 236, 46);
-  width: 100%;
+  width: 5%;
   height: 20px;
   justify-self:start;  
 
@@ -37,7 +70,7 @@
 #azul{
  
   background-color: rgb(70, 126, 230);
-  width: 100%;
+  width: 195%;
   height: 20px;
   justify-self:end; 
   
@@ -53,15 +86,31 @@
 </head>
 <body>
   <div id="inputs">
-  <form id="form">
-    <input type="text" name="nametask" placeholder="Nome da Tarefa" autocomplete="off">
+  <form id="form" onsubmit="return false">
+    <input id="myInput" type="text" name="nametask" placeholder="Nome da Tarefa" autocomplete="off">
   </form>
   <button id="add" onclick="criarTarefa()">Adicionar Tarefa</button>
   </div>
 
 
-  <div id="tarefa">
+  <!-- <div id="tarefa">
     <p id="text">Exemplo - Tarefa 1</p>
+    <div id="card">
+      <div id="verde"></div>
+      <div id="azul"></div>
+    </div>
+  </div> -->
+
+  <div id="tarefa" onmouseover="selectTarefa()">
+    <div id="act">
+      <p id="text">Exemplo - Tarefa 1</p>
+      <button id="play" onclick="">Play</button>
+      <button id="stop" onclick="">Stop</button>
+      <button id="edit" onclick="">Edit</button>
+      <button id="clear" onclick="clearTarefa()">Clear</button>
+      <p id="time">00:00:00</p>
+    </div>
+    
     <div id="card">
       <div id="verde"></div>
       <div id="azul"></div>
@@ -74,12 +123,23 @@
 <!-- JavaScript -->
 <script>
 
+//Função de Pressionar Enter
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("add").click();
+  }
+});
+
 // Função de Criar Tarefas
 function criarTarefa(){
-  var newcontent = "";
-  //Criar o Modelo de Elemento a Ser Gerado
+  
+  //Criar o Modelo de tarefa a Ser Gerada
   var newtask = document.createElement("div");
   newtask.setAttribute("id", "tarefa");
+  var newact = document.createElement("div");
+  newact.setAttribute("id", "act");
   var newtext = document.createElement("p");
   newtext.setAttribute("id", "text");
   var newcard = document.createElement("div");
@@ -90,19 +150,52 @@ function criarTarefa(){
   newazul.setAttribute("id", "azul");
   var newcontent = document.createTextNode(nomeTarefa());
 
-  newtask.appendChild(newtext);
+  // Cria o Modelo de Act a Ser Gerado
+  var newplay = document.createElement("button");
+  newplay.setAttribute("id", "play");
+  var newstop = document.createElement("button");
+  newstop.setAttribute("id", "stop");
+  var newedit = document.createElement("button");
+  newedit.setAttribute("id", "edit");
+  var newclear = document.createElement("button");
+  newclear.setAttribute("id", "clear");
+  newclear.setAttribute("onclick", "clearTarefa()");
+  var newtime = document.createElement("p");
+  newtime.setAttribute("id", "time");
+
+  var playcontent = document.createTextNode("Play");
+  var stopcontent = document.createTextNode("Stop");
+  var editcontent = document.createTextNode("Edit");
+  var clearcontent = document.createTextNode("Clear");
+  var timecontent = document.createTextNode("00:00:00");
+
+  //Insere os Nós
+  newtask.appendChild(newact);
+  newact.appendChild(newtext);
+
+  newact.appendChild(newplay);
+  newact.appendChild(newstop);
+  newact.appendChild(newedit);
+  newact.appendChild(newclear);
+  newact.appendChild(newtime);
+
+  newplay.appendChild(playcontent);
+  newstop.appendChild(stopcontent);
+  newedit.appendChild(editcontent);
+  newclear.appendChild(clearcontent);
+  newtime.appendChild(timecontent);
+
   newtext.appendChild(newcontent);
   newtask.appendChild(newcard);
   newcard.appendChild(newverde);
   newcard.appendChild(newazul);
 
-
-  // Adiciona o Elemendo Gerado
+  // Adiciona o Elemendo Gerado no HTML atual
   var oldtask = document.getElementById("tarefa"); 
   document.body.insertBefore(newtask, oldtask);
 }
 
-// Função de Criar Tarefas
+// Função de Nomear Tarefas
 function nomeTarefa(){
         var x = document.getElementById("form");
         var texto = "";
@@ -112,4 +205,24 @@ function nomeTarefa(){
         }
         return texto;
 } 
+// Criando Funções de Interação com Tarefas
+
+// Função de Play Tarefa
+function playTarefa(){
+
+}
+// Função de Stop Tarefa
+function stopTarefa(){
+
+}
+// Função de Excluir Tarefa
+function clearTarefa(){
+  var lixo = document.getElementById("tarefa");
+  lixo.remove();
+}
+
+// Função de Editar Tarefa
+function editTarefa(){
+
+}
 </script>
