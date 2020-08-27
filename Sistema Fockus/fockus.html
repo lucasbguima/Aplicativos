@@ -13,7 +13,7 @@
 }
 
 #form{
-  justify-self: right;
+  justify-self: left;
 }
 
 #add{
@@ -92,16 +92,13 @@
   <button id="add" onclick="criarTarefa()">Adicionar Tarefa</button>
   </div>
 
+  <div id="tempo">
+    <form id="form2" onsubmit="return false">
+      <input type="time" id="relogio" name="relogio" step="1" required>
+    </form>
+  </div>
 
-  <!-- <div id="tarefa">
-    <p id="text">Exemplo - Tarefa 1</p>
-    <div id="card">
-      <div id="verde"></div>
-      <div id="azul"></div>
-    </div>
-  </div> -->
-
-  <div id="tarefa" onmouseover="selectTarefa()">
+  <div id="tarefa">
     <div id="act">
       <p id="text">Exemplo - Tarefa 1</p>
       <button id="play" onclick="">Play</button>
@@ -217,7 +214,7 @@ function stopTarefa(){
 }
 // Função de Excluir Tarefa
 function clearTarefa(){
-  var lixo = document.getElementById("tarefa");
+  var lixo = document.activeElement.parentElement.parentElement;
   lixo.remove();
 }
 
@@ -225,4 +222,5 @@ function clearTarefa(){
 function editTarefa(){
 
 }
+
 </script>
