@@ -203,7 +203,7 @@ function getTime(){
   var user_m = tempo.slice(3,5);
   var user_s = tempo.slice(6,8);
   var user_tempo = user_h*3600 + user_m*60 + user_s*1;
-
+  
   temporeal = new Date();
   real_h = temporeal.getHours();
   real_m = temporeal.getMinutes();
@@ -214,21 +214,20 @@ function getTime(){
   var barraverde = document.activeElement.parentElement.nextElementSibling.firstElementChild;
   var barraazul = document.activeElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling;
   if (user_tempo>real_tempo){
-  alert("Sua tarefa deve ser realizada até " + tempo + "!")
+  /* alert("Sua tarefa deve ser realizada até " + tempo + "!") */
   barraverde.style.width = ((real_tempo*200)/user_tempo)+"%";
   barraazul.style.width = (200 - ((real_tempo*200)/user_tempo))+"%";
   } 
   else if(user_tempo==real_tempo){
-  alert("Tempo para realizar tarefa esgotado!")
+  alert("Tempo para realizar tarefa esgotado!");
   barraverde.style.width = 200+"%";
   barraazul.style.width = 0+"%";
   } 
   else{
-  alert("Você não pode adiar sua tarefa para amanhã!")
+  /* alert("Você não pode adiar sua tarefa para amanhã!") */
   barraverde.style.width = ((real_tempo*200)/(user_tempo+86400))+"%";
   barraazul.style.width = (200 - ((real_tempo*200)/(user_tempo+86400)))+"%";
   }
-
 }
 
 // Função de Nomear Tarefas
