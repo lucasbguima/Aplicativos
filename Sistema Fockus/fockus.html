@@ -5,6 +5,14 @@
 
 <style>
 
+/* Responsive */
+@media all and (max-width: 400px) {
+  #time{
+  justify-self: end;
+  width: 100%;
+  }
+}
+
 /* Grid Inputs */
 #inputs{
   display: grid;
@@ -34,10 +42,11 @@
 }
 #play{
   justify-self: auto;
+  
 }
 #stop{
   justify-self: auto;
- 
+  
 }
 #edit{
   justify-self: auto;
@@ -45,11 +54,10 @@
 }
 #clear{
   justify-self: auto;
- 
+  
 }
 #time{
   justify-self: end;
-  
 }
 
 /* Grid Cards */
@@ -58,13 +66,14 @@
   grid-template-columns: auto auto;
   border: solid 1px black;
   align-items: center;
+  height: 20px;
 }
 #verde{
   
   background-color: rgb(52, 236, 46);
   width: 5%;
   height: 20px;
-  justify-self:start;  
+  justify-self:start;
 
 }
 #azul{
@@ -72,8 +81,7 @@
   background-color: rgb(70, 126, 230);
   width: 195%;
   height: 20px;
-  justify-self:end; 
-  
+  justify-self:end;
   
 }
 </style>
@@ -92,12 +100,6 @@
   <button id="add" onclick="criarTarefa()">Adicionar Tarefa</button>
   </div>
 
-  <div id="tempo">
-    <form id="form2" onsubmit="return false">
-      <input type="time" id="relogio" name="relogio" step="1" required>
-    </form>
-  </div>
-
   <div id="tarefa">
     <div id="act">
       <p id="text">Exemplo - Tarefa 1</p>
@@ -105,7 +107,7 @@
       <button id="stop" onclick="">Stop</button>
       <button id="edit" onclick="">Edit</button>
       <button id="clear" onclick="clearTarefa()">Clear</button>
-      <p id="time">00:00:00</p>
+      <input type="time" id="time" step="1" oninput="getTime()">
     </div>
     
     <div id="card">
@@ -157,14 +159,16 @@ function criarTarefa(){
   var newclear = document.createElement("button");
   newclear.setAttribute("id", "clear");
   newclear.setAttribute("onclick", "clearTarefa()");
-  var newtime = document.createElement("p");
+  var newtime = document.createElement("input");
+  newtime.setAttribute("type", "time");
   newtime.setAttribute("id", "time");
+  newtime.setAttribute("step", "1");
+  newtime.setAttribute("oninput", "getTime()");
 
-  var playcontent = document.createTextNode("Play");
+  var playcontent = document.createTextNode("Play");  
   var stopcontent = document.createTextNode("Stop");
   var editcontent = document.createTextNode("Edit");
   var clearcontent = document.createTextNode("Clear");
-  var timecontent = document.createTextNode("00:00:00");
 
   //Insere os Nós
   newtask.appendChild(newact);
@@ -180,7 +184,6 @@ function criarTarefa(){
   newstop.appendChild(stopcontent);
   newedit.appendChild(editcontent);
   newclear.appendChild(clearcontent);
-  newtime.appendChild(timecontent);
 
   newtext.appendChild(newcontent);
   newtask.appendChild(newcard);
@@ -190,6 +193,42 @@ function criarTarefa(){
   // Adiciona o Elemendo Gerado no HTML atual
   var oldtask = document.getElementById("tarefa"); 
   document.body.insertBefore(newtask, oldtask);
+}
+
+// Função de Pegar Tempo do Usuário
+function getTime(){
+
+  var tempo = document.activeElement.value;
+  var user_h = tempo.slice(0,2);
+  var user_m = tempo.slice(3,5);
+  var user_s = tempo.slice(6,8);
+  var user_tempo = user_h*3600 + user_m*60 + user_s*1;
+
+  temporeal = new Date();
+  real_h = temporeal.getHours();
+  real_m = temporeal.getMinutes();
+  real_s = temporeal.getSeconds();
+  var real_tempo = real_h*3600 + real_m*60 + real_s*1;
+
+  // Parte de Atualizar Barra
+  var barraverde = document.activeElement.parentElement.nextElementSibling.firstElementChild;
+  var barraazul = document.activeElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling;
+  if (user_tempo>real_tempo){
+  alert("Sua tarefa deve ser realizada até " + tempo + "!")
+  barraverde.style.width = ((real_tempo*200)/user_tempo)+"%";
+  barraazul.style.width = (200 - ((real_tempo*200)/user_tempo))+"%";
+  } 
+  else if(user_tempo==real_tempo){
+  alert("Tempo para realizar tarefa esgotado!")
+  barraverde.style.width = 200+"%";
+  barraazul.style.width = 0+"%";
+  } 
+  else{
+  alert("Você não pode adiar sua tarefa para amanhã!")
+  barraverde.style.width = ((real_tempo*200)/(user_tempo+86400))+"%";
+  barraazul.style.width = (200 - ((real_tempo*200)/(user_tempo+86400)))+"%";
+  }
+
 }
 
 // Função de Nomear Tarefas
