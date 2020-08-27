@@ -199,6 +199,7 @@ function criarTarefa(){
 function getTime(){
 
   var tempo = document.activeElement.value;
+
   var user_h = tempo.slice(0,2);
   var user_m = tempo.slice(3,5);
   var user_s = tempo.slice(6,8);
@@ -211,23 +212,25 @@ function getTime(){
   var real_tempo = real_h*3600 + real_m*60 + real_s*1;
 
   // Parte de Atualizar Barra
-  var barraverde = document.activeElement.parentElement.nextElementSibling.firstElementChild;
-  var barraazul = document.activeElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling;
-  if (user_tempo>real_tempo){
-  /* alert("Sua tarefa deve ser realizada até " + tempo + "!") */
-  barraverde.style.width = ((real_tempo*200)/user_tempo)+"%";
-  barraazul.style.width = (200 - ((real_tempo*200)/user_tempo))+"%";
-  } 
-  else if(user_tempo==real_tempo){
-  alert("Tempo para realizar tarefa esgotado!");
-  barraverde.style.width = 200+"%";
-  barraazul.style.width = 0+"%";
-  } 
-  else{
-  /* alert("Você não pode adiar sua tarefa para amanhã!") */
-  barraverde.style.width = ((real_tempo*200)/(user_tempo+86400))+"%";
-  barraazul.style.width = (200 - ((real_tempo*200)/(user_tempo+86400)))+"%";
-  }
+    var barraverde = document.activeElement.parentElement.nextElementSibling.firstElementChild;
+    var barraazul = document.activeElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling;
+
+    if (user_tempo>real_tempo){
+    barraverde.style.width = ((real_tempo*200)/user_tempo)+"%";
+    barraazul.style.width = (200 - ((real_tempo*200)/user_tempo))+"%";
+    alert("Você deve terminar sua tarefa até " + tempo);
+    }
+    else if(user_tempo<real_tempo){
+    barraverde.style.width = ((real_tempo*200)/(user_tempo+86400))+"%";
+    barraazul.style.width = (200 - ((real_tempo*200)/(user_tempo+86400)))+"%";
+    alert("Você deixou sua tarefa pra amanhã!");
+    } 
+    else{
+    barraverde.style.width = 200+"%";
+    barraazul.style.width = 0+"%";
+    alert("O tempo de conclusão da sua tarefa acabou!");
+    }
+    
 }
 
 // Função de Nomear Tarefas
