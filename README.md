@@ -1,6 +1,6 @@
 # Aplicativos
 
-<p><b>Linguagem C / PHP / Javascript</b><br/></p>
+<p><b>Linguagem C / Javascript / PHP</b><br/></p>
 
 <p>Lista de Aplicativos:</p>
 
