@@ -15,7 +15,7 @@ Programa            | Aplicação | Versão | Linguagem
 
 <p>Lista de Projetos:</p>
 
-Programa            | Aplicação | Versão | Framework
+Programa            | Aplicação | Banco | Framework
 ----------------- | -------- | :---------: | :---------:
-[CRUD Laravel + MYSQL](https://github.com/lucasbguima/Sistemas/blob/master/Sistema%20de%20Tickets/ticket.c)  | Modelo de CRUD para aplicações em Laravel + MYSQL | RC 1.0 | Laravel
-[CRUD Express.js + MongoDB ](https://github.com/lucasbguima/Sistemas/blob/master/Sistema%20Fockus/fockus.html)  | Modelo de CRUD para aplicações em Express.js + MONGODB | RC 1.0 | Express.js
+[CRUD Laravel + MySQL](https://github.com/lucasbguima/Sistemas/blob/master/Sistema%20de%20Tickets/ticket.c)  | Cria postagens em GRID para feed de produtos dinâmico. | MySQL | Laravel
+[CRUD Express.js + MongoDB ](https://github.com/lucasbguima/Sistemas/blob/master/Sistema%20Fockus/fockus.html)  | Cria publicações em GRID para timeline ao vivo. | MongoDB | Express.js
