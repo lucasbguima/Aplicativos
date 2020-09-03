@@ -1,0 +1,81 @@
+/* CSS */
+
+/* Responsive */
+@media all and (max-width: 400px) {
+  #time{
+  justify-self: end;
+  width: 100%;
+  }
+}
+
+/* Grid Inputs */
+#inputs{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+}
+
+#form{
+  justify-self: left;
+}
+
+#add{
+  justify-self: left;
+}
+
+/* Grid Act */
+
+#act{
+  display: grid;
+  grid-template-columns: 1fr min-content min-content min-content min-content 1fr;
+  align-items: center;
+}
+
+#text{
+  justify-self: start;
+  
+}
+#play{
+  justify-self: auto;
+  
+}
+#stop{
+  justify-self: auto;
+  
+}
+#edit{
+  justify-self: auto;
+  
+}
+#clear{
+  justify-self: auto;
+  
+}
+#time{
+  justify-self: end;
+}
+
+/* Grid Cards */
+#card{
+  display: grid;
+  grid-template-columns: auto auto;
+  border: solid 1px black;
+  align-items: center;
+  height: 20px;
+}
+#verde{
+  
+  background-color: rgb(52, 236, 46);
+  width: 5%;
+  height: 20px;
+  justify-self:start;
+
+}
+#azul{
+ 
+  background-color: rgb(70, 126, 230);
+  width: 195%;
+  height: 20px;
+  justify-self:end;
+  
+}
