@@ -13,11 +13,12 @@ def my_function():
         print("\nBem vindo a tela de cadastro de produtos!\n")
         nomeproduto = input("Digite o nome do produto: ")
         qtdproduto = int(input("Digite a quantidade do produto: "))
-        valorproduto = float(input("Digite o valor unitário do produto: R$"))
+        valorproduto = format(float(input("Digite o valor unitário do produto: R$")), '.2f')
 
     elif modo == 2:
         """TELA DE PRODUTOS"""
         print("\nBem vindo a tela de produtos!\n")
+    
    
     elif modo == 3:
         """REMOÇÃO DE PRODUTOS"""
