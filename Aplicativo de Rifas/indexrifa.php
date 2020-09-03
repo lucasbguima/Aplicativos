@@ -31,6 +31,7 @@ input:focus, textarea:focus, select:focus{
 
 #but:hover {
   background-color: rgb(135,206,250);
+  cursor: pointer;
 }
 
 #gridrifa{
@@ -55,6 +56,7 @@ input:focus, textarea:focus, select:focus{
 }
 #inputc:hover{
   background-color: rgb(0,191,255);
+
 }
 </style>
 <head>
