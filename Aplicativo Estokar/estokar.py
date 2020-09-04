@@ -9,10 +9,6 @@ data = pd.DataFrame({
     "Valor": []
 })
 
-"""Função Verificar Input"""
-def verificar():
-    if input==
-
 """Função Retornar"""
 def retornar():
     d = int(input("Deseja realizar outra operação? (1)Sim (2)Não "))
@@ -34,15 +30,19 @@ def retornar():
         retornar()
 """Função Cabecario"""
 def cabec():
-    print("=========================================================")
+    print("\033[0;31m=========================================================\033[m")
 
 """Função Cadastrar"""
 def cadastrar():
     global x
-    print("Bem vindo ao Cadastro de Produtos!\n")
-    n = input("Digite o nome do produto: ")
-    q = format(int(input("Digite a quantidade do produto: ")), '.0f')
-    v = format(float(input("Digite o valor unitário do produto: R$")), '.2f')
+
+    try:
+        n = str(input("Digite o nome do produto: "))    
+        q = format(int(input("Digite a quantidade do produto: ")), '.0f')
+        v = format(float(input("Digite o valor unitário do produto: R$")), '.2f')
+    except:
+        print("Você inseriu dados com formato errados!\n")
+        cadastrar()
 
     data.loc[x] = [n, q, "R$"+v]
 
@@ -53,42 +53,47 @@ def cadastrar():
         cadastrar()
     elif d==2:
         x = x+1
+        print(data)
         return x
     else:
         x = x+1
+        print(data)
         return x
 
 """Função Principal"""
 def principal():
     cabec()
     print("Bem vindo ao Estokar!\n")
-    print("Digite o ambiente de acesso:\n\n(1)Cadastro de produtos\n(2)Ver produtos\n(3)Remover Produtos\n")
-
-    modo = int(input("Escolha um ambiente: "))
-    
-    if modo == 1:
-        """CADASTRO DE PRODUTOS"""
-        cadastrar()
-        print(data)
-        retornar()
-
-    elif modo == 2:
-        """TELA DE PRODUTOS"""
-        print("\nBem vindo a tela de produtos!\n")
-        if data.empty:
-             print('Você não tem nenhum produto cadastrado!')
-             retornar()
-        else:
-            print(data)
+    print("Digite o ambiente de acesso:\n\n(1)\033[0;37mCadastro de produtos\033[m\n(2)\033[0;37mVer produtos\033[m\n(3)\033[0;37mRemover Produtos\033[m\n")
+    try:
+        modo = int(input("Escolha um ambiente: "))
+        
+        if modo == 1:
+            """CADASTRO DE PRODUTOS"""
+            cadastrar()
+            print("\nOperação Finalizada!")
             retornar()
-   
-    elif modo == 3:
-        """REMOÇÃO DE PRODUTOS"""
-        print("\nBem vindo a tela de remoção de produtos!\n")
-  
-    else:
-        """ERRO"""
-        print("Erro!")
+
+        elif modo == 2:
+            """TELA DE PRODUTOS"""
+            print("\nBem vindo a tela de produtos!\n")
+            if data.empty:
+                print('Você não tem nenhum produto cadastrado!')
+                retornar()
+            else:
+                print(data)
+                retornar()
+    
+        elif modo == 3:
+            """REMOÇÃO DE PRODUTOS"""
+            print("\nBem vindo a tela de remoção de produtos!\n")
+    
+        else:
+            """ERRO"""
+            print("\nOperação Finalizada!")
+            principal()
+    except:
+        print("\nOperação Finalizada!")
         principal()
 
 """Chamada de Funções"""
