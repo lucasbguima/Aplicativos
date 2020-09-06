@@ -25,6 +25,9 @@ def cadastrar():
 x = 1
 
 cadastrar()
-indice = int(input("Selecione o índice do item que deseja remover: "))
-y = data.iloc[indice]
+indice = int(input("Selecione o índice do item que deseja alterar: "))
+y = data['Produto'].iloc[indice]
 print(y)
+n = str(input("Digite o novo nome do produto: "))
+
+print(data)
