@@ -23,5 +23,8 @@ def cadastrar():
         return
 
 x = 1
+
 cadastrar()
-data
+indice = int(input("Selecione o índice do item que deseja remover: "))
+y = data.iloc[indice]
+print(y)

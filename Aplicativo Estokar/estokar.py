@@ -2,12 +2,13 @@
 import pandas as pd
 
 """Variaveis Globais"""
-x = 1
+
 data = pd.DataFrame({
     "Produto": [],
     "Quantidade": [],
     "Valor": []
 })
+x = len(data)
 
 """Função Retornar"""
 def retornar():
@@ -49,14 +50,14 @@ def cadastrar():
     d = int(input("Deseja cadastrar mais produtos? (1)Sim (2)Não "))
 
     if d==1:
-        x = x+1
+        x = len(data)
         cadastrar()
     elif d==2:
-        x = x+1
+        x = len(data)
         print(data)
         return x
     else:
-        x = x+1
+        x = len(data)
         print(data)
         return x
 
@@ -64,7 +65,7 @@ def cadastrar():
 def principal():
     cabec()
     print("Bem vindo ao Estokar!\n")
-    print("Digite o ambiente de acesso:\n\n(1)\033[0;37mCadastro de produtos\033[m\n(2)\033[0;37mVer produtos\033[m\n(3)\033[0;37mRemover Produtos\033[m\n")
+    print("Digite o ambiente de acesso:\n\n(1)Cadastro de produtos\n(2)Ver produtos\n(3)Remover Produtos\n")
     try:
         modo = int(input("Escolha um ambiente: "))
         
