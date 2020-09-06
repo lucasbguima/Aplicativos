@@ -10,6 +10,15 @@ data = pd.DataFrame({
 })
 x = len(data)
 
+"""Função Load"""
+def load():
+    global data
+    global x
+    data = pd.read_csv("./exemplo.csv", index_col=0)
+    x = len(data)
+    print(data)
+    return data and x
+    
 """Função Retornar"""
 def retornar():
     d = int(input("Deseja realizar outra operação? (1)Sim (2)Não "))
@@ -19,6 +28,7 @@ def retornar():
         d = int(input("Deseja sair e salvar seu estoque? (1)Sim (2)Não "))
 
         if d==1:
+            data.to_csv("exemplo.csv")
             print("\nVocê saiu e salvou seu estoque!\n")
         elif d==2:
             print("\nVocê saiu sem salvar seu estoque!\n")
@@ -85,10 +95,13 @@ def alterar():
             print("\n",data)
             
         elif d==4:
+            global x
             data.drop(indice, inplace=True, axis=0)
             data.reset_index(drop=True, inplace=True)
             print("\nO produto foi removido!\n")
+            x = len(data)
             print(data)
+            return x
         else:
             principal()
         
@@ -104,7 +117,7 @@ def principal():
     data.reset_index(drop=True, inplace=True)
     cabec()
     print("Bem vindo ao Estokar!\n")
-    print("Digite o ambiente de acesso:\n\n(1)Cadastro de produtos\n(2)Ver produtos\n(3)Alterar Produtos\n(0)Sair")
+    print("Digite o ambiente de acesso:\n\n(1)Cadastro de produtos\n(2)Ver produtos\n(3)Alterar Produtos\n(4)Carregar Dados\n(0)Sair")
     try:
         modo = int(input("Escolha um ambiente: "))
         
@@ -131,6 +144,11 @@ def principal():
             alterar()
             print("\nOperação Finalizada!")
             retornar()
+            """LOAD PRODUTOS"""
+        elif modo == 4: 
+            load()
+            print("\nSeus dados foram carregados!\n")
+            principal()
         else:
             """ERRO"""
             print("\nVocê saiu do Estokar!")
