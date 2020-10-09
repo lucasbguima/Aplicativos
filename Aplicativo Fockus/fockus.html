@@ -9,20 +9,20 @@
 </head>
 <body>
   <div id="inputs">
-  <form id="form" onsubmit="return false">
+  <form id="form" type="submit">
     <input id="myInput" type="text" name="nametask" placeholder="Nome da Tarefa" autocomplete="off">
   </form>
-  <button id="add" onclick="criarTarefa()">Adicionar Tarefa</button>
+  <button id="add">Adicionar Tarefa</button>
   </div>
 
   <div id="tarefa">
     <div id="act">
       <p id="text">Exemplo - Tarefa 1</p>
-      <button id="play" onclick="">Play</button>
-      <button id="stop" onclick="">Stop</button>
-      <button id="edit" onclick="">Edit</button>
-      <button id="clear" onclick="clearTarefa()">Clear</button>
-      <input type="time" id="time" step="1" oninput="getTime()">
+      <button id="play" >Play</button>
+      <button id="stop" >Stop</button>
+      <button id="edit" >Edit</button>
+      <button id="clear" >Clear</button>
+      <input type="time" id="time" step="1">
     </div>
     
     <div id="card">
@@ -31,6 +31,6 @@
     </div>
   </div>
   
-  <script type="text/javascript" src="script.js"></script>
 </body>
+<script defer type="text/javascript" src="script.js"></script>
 </html>

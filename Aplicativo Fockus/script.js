@@ -1,12 +1,3 @@
-//Função de Pressionar Enter
-var input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("add").click();
-  }
-});
-
 // Função de Criar Tarefas
 function criarTarefa(){
   
@@ -34,7 +25,6 @@ function criarTarefa(){
   newedit.setAttribute("id", "edit");
   var newclear = document.createElement("button");
   newclear.setAttribute("id", "clear");
-  newclear.setAttribute("onclick", "clearTarefa()");
   var newtime = document.createElement("input");
   newtime.setAttribute("type", "time");
   newtime.setAttribute("id", "time");
@@ -94,17 +84,17 @@ function getTime(){
     if (user_tempo>real_tempo){
     barraverde.style.width = ((real_tempo*200)/user_tempo)+"%";
     barraazul.style.width = (200 - ((real_tempo*200)/user_tempo))+"%";
-    alert("Você deve terminar sua tarefa até " + tempo);
+    /* alert("Você deve terminar sua tarefa até " + tempo); */
     }
     else if(user_tempo<real_tempo){
     barraverde.style.width = ((real_tempo*200)/(user_tempo+86400))+"%";
     barraazul.style.width = (200 - ((real_tempo*200)/(user_tempo+86400)))+"%";
-    alert("Você deixou sua tarefa pra amanhã!");
+    /* alert("Você deixou sua tarefa pra amanhã!"); */
     } 
     else{
     barraverde.style.width = 200+"%";
     barraazul.style.width = 0+"%";
-    alert("O tempo de conclusão da sua tarefa acabou!");
+    /* alert("O tempo de conclusão da sua tarefa acabou!"); */
     }
     
 }
@@ -139,3 +129,54 @@ function clearTarefa(){
 function editTarefa(){
 
 }
+
+// ############## Refatorando Eventos - Event Listener ###############
+
+// Criar Tarefa 
+document.querySelector("#add").addEventListener('click', function(){
+  criarTarefa();
+    // Clear Tarefa Criada
+    document.querySelector("#clear").addEventListener('click', function(){
+    clearTarefa();
+    })
+    // Time Tarefa Criada
+    document.querySelector("#time").addEventListener('input', function(){
+    getTime();
+    })
+})
+
+// Clear Tarefa Inicial
+document.querySelector("#clear").addEventListener('click', function(){
+   clearTarefa();
+})
+
+// Get Time Inicial
+document.querySelector("#time").addEventListener('input', function(){
+  getTime();
+})
+
+// Enter Input Geral
+document.querySelector("#myInput").addEventListener('keyup', function(event){
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.querySelector("#add").click();
+   }
+})
+
+document.querySelector("#form").addEventListener('submit', function(event){
+  event.preventDefault();
+  return false;
+})
+
+// Exemplo de cards e tarefas com cores aleatorias
+
+/* setInterval(
+  function () {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    
+    document.querySelectorAll("#tarefa").forEach(element => {
+      document.querySelector("#tarefa").style.backgroundColor = "#"+randomColor;
+    });
+    
+  },1000); */
+
