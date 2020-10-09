@@ -168,7 +168,7 @@ document.querySelector("#form").addEventListener('submit', function(event){
   return false;
 })
 
-// Exemplo de cards e tarefas com cores aleatorias
+// Exemplo de cards com cores aleatorias
 
 /* setInterval(
   function () {
