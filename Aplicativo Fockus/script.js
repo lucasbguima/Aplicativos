@@ -29,7 +29,6 @@ function criarTarefa(){
   newtime.setAttribute("type", "time");
   newtime.setAttribute("id", "time");
   newtime.setAttribute("step", "1");
-  newtime.setAttribute("oninput", "getTime()");
 
   var playcontent = document.createTextNode("Play");  
   var stopcontent = document.createTextNode("Stop");
