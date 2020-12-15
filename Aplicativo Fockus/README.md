@@ -16,7 +16,9 @@ Seguem as linguagens usadas para criar Fockus:
 
 ## Instalação
 
-Para usar o aplicativo fockus 
+Requisitos:
+
+Para usar o aplicativo fockus basta ter um navegador no computador.
 
 ### Passo 1
 
