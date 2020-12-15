@@ -11,8 +11,8 @@ Funcionalidades:
 
 Seguem as linguagens usadas para criar Fockus:
 
-[Javascript Puro](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - A linguagem de script para páginas Web.
-[Chrome Extensions](https://developer.chrome.com/docs/extensions/mv3/) - Crie extensões para o navegador Chrome.
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - A linguagem de script para páginas Web.
+- [Chrome Extensions](https://developer.chrome.com/docs/extensions/mv3/) - Crie extensões para o navegador Chrome.
 
 ## Instalação
 
