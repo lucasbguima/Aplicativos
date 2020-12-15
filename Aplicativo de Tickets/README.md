@@ -21,7 +21,7 @@ Modo Usuário:
 
 Seguem as linguagens usadas para criar o Ticket:
 
-- [Linguagem C](https://docs.microsoft.com/pt-br/cpp/c-language/?view=msvc-160) - Uma linguagem de programação para se trabalhar rápido e integrar sistemas com eficiência.
+- [Linguagem C](https://docs.microsoft.com/pt-br/cpp/c-language/?view=msvc-160) - Uma linguagem de programação compilada de propósito geral, estruturada, imperativa, procedural e padronizada.
 
 ## Instalação
 
