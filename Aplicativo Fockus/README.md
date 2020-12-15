@@ -55,7 +55,7 @@ Configure o manifest.json da seguinte forma:
 }
 ```
 
-Por fim, basta entrar no link [chrome://extensions] (chrome://extensions) e carregar a aplicação para ser usada no navegador.
+Por fim, basta entrar no link [chrome://extensions] e carregar a aplicação para ser usada no navegador.
 
 ## Contribuições
 Pull requests são bem-vindas. Para maiores discussões, por favor abra uma issue primeiro para discutir o que você gostaria de mudar na aplicação.
